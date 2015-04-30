@@ -23,4 +23,5 @@ group :test do
   gem 'capybara-webkit'
   gem 'minitest-rails-capybara'
   gem 'poltergeist'
+  gem 'launchy'
 end
