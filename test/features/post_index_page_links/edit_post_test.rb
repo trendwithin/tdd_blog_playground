@@ -20,14 +20,17 @@ feature "Edit Post Link: Authors Limitations" do
   scenario "Authors Can Only Edit Their Own Post" do
     sign_in_author
     visit posts_path
-    # situation here
+    click_link "Edit"
+    fill_in 'Body', with: "Hello World"
+    click_button 'Update Post'
+    page.must_have_content "Hello World"
   end
 end
 
-feature "Edit Post Link: Available to Admin" do
+feature "Edit/Destroy Link: Available to Admin" do
   scenario "Admin Visits Post Index" do
     sign_in_admin
-    visit posts_path
     page.must_have_content "Edit"
+    page.must_have_content "Destroy"
   end
 end
