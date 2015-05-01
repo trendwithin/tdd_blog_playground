@@ -11,7 +11,7 @@ end
 feature "Edit Post Link: Available to Authors" do
   scenario "Author Privelaged User Visits Post Index" do
     sign_in_author
-    visits posts_path
+    visit posts_path
     page.must_have_content "Edit"
   end
 end
@@ -19,7 +19,7 @@ end
 feature "Edit Post Link: Authors Limitations" do
   scenario "Authors Can Only Edit Their Own Post" do
     sign_in_author
-    visits posts_path
+    visit posts_path
     # situation here
   end
 end
