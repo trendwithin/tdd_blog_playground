@@ -16,9 +16,16 @@ class ActiveSupport::TestCase
 end
 
 # User Sign In
-def sign_in
+def sign_in_admin
   visit new_user_session_path
   fill_in "Email", with: users(:vic).email
+  fill_in "Password", with: 'password'
+  click_on "Log in"
+end
+
+def sign_in_author
+  visit new_user_session_path
+  fill_in "Email", with: users(:shane).email
   fill_in "Password", with: 'password'
   click_on "Log in"
 end
