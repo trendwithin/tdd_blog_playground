@@ -12,7 +12,12 @@ class PostPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? && user == post.user # && (user.admin? || user.author?)
+    return true if user.present? && user.admin?
+    user.present? && user == post.user
+  end
+
+  def edit?
+    update?
   end
 
   def destroy?
