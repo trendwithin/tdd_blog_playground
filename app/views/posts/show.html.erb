@@ -2,7 +2,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @post.user_id %>
+  <%= @post.user.email %>
 </p>
 
 <p>
@@ -14,6 +14,7 @@
   <strong>Body:</strong>
   <%= @post.body %>
 </p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_post_path(@post) if policy(post).edit? %> |
+<% end %>
 <%= link_to 'Back', posts_path %>
